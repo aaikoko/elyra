@@ -38,6 +38,7 @@ class RuntimeProcessorType(Enum):
     ######################################
     # Add new entry here for each new type
     ######################################
+    UNICORE_PIPELINES = "Unicore Pipelines"
 
     @staticmethod
     def get_instance_by_name(name: str) -> "RuntimeProcessorType":
@@ -76,6 +77,8 @@ class RuntimeTypeResources(object):
             return ArgoResources()
         if runtime_type == RuntimeProcessorType.LOCAL:
             return LocalResources()
+        if runtime_type == RuntimeProcessorType.UNICORE_PIPELINES:
+            return UnicorePipelinesResources()
         raise ValueError(f"Runtime type {runtime_type} is not recognized.")
 
     @property
@@ -138,3 +141,9 @@ class LocalResources(RuntimeTypeResources):
 ###########################################################
 # Add new platform info definitions here for each new type
 ###########################################################
+class UnicorePipelinesResources(RuntimeTypeResources):
+    """Holds static information relative to Unicore Pipelines processors"""
+
+    type = RuntimeProcessorType.UNICORE_PIPELINES
+    icon_endpoint = "static/elyra/pipeline-flow.svg"
+    export_file_types = []

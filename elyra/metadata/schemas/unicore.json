@@ -1,0 +1,68 @@
+{
+  "$schema": "https://raw.githubusercontent.com/aaikoko/elyra/master/elyra/metadata/schemas/meta-schema.json",
+  "$id": "https://raw.githubusercontent.com/aaikoko/elyra/master/elyra/metadata/schemas/unicore.json",
+  "title": "Unicore Pipelines",
+  "name": "unicore",
+  "schemaspace": "runtimes",
+  "schemaspace_id": "130b8e00-de7c-4b32-b553-b4a52824a3b5",
+  "uihints": {
+    "title": "Unicore runtimes",
+    "icon": "elyra:runtimes",
+    "reference_url": "https://elyra.readthedocs.io/en/v3.8.0/user_guide/runtime-conf.html"
+  },
+  "properties": {
+    "schema_name": {
+      "title": "Schema Name",
+      "description": "The schema associated with this instance",
+      "type": "string",
+      "const": "unicore"
+    },
+    "display_name": {
+      "title": "Display Name",
+      "description": "The display name of the Unicore configuration",
+      "type": "string",
+      "minLength": 1
+    },
+    "metadata": {
+      "description": "Additional data specific to this metadata",
+      "type": "object",
+      "properties": {
+        "description": {
+          "title": "Description",
+          "description": "The description of this Unicore configuration",
+          "type": "string"
+        },
+        "system": {
+          "title": "System",
+          "description": "The HPC System the pipeline should run on",
+          "type": "string",
+          "enum": ["JUWELS", "JURECA"],
+          "default": "JUWELS",
+          "uihints": {
+            "field_type": "dropdown",
+            "category": "Unicore Pipelines"
+          }
+        },
+        "authentication_token": {
+          "title": "Unicore Authentication Token",
+          "description": "Unicore authentication token",
+          "type": "string",
+          "uihints": {
+            "secure": true,
+            "category": "Unicore Pipelines"
+          }
+        },
+        "tags": {
+          "title": "Tags",
+          "description": "Tags for categorizing Unicore",
+          "type": "array",
+          "uihints": {
+            "field_type": "tags"
+          }
+        }
+      },
+      "required": ["system", "authentication_token"]
+    }
+  },
+  "required": ["schema_name", "display_name", "metadata"]
+}

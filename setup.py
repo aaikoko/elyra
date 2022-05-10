@@ -148,6 +148,7 @@ setup_args = dict(
             "local = elyra.pipeline.local.processor_local:LocalPipelineProcessor",
             "airflow = elyra.pipeline.airflow.processor_airflow:AirflowPipelineProcessor",
             "kfp = elyra.pipeline.kfp.processor_kfp:KfpPipelineProcessor",
+            "unicore = elyra.pipeline.unicore.processor_unicore:UnicorePipelineProcessor",
         ],
         "elyra.component.catalog_types": [
             "url-catalog = elyra.pipeline.catalog_connector:UrlComponentCatalogConnector",
